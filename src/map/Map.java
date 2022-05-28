@@ -1,5 +1,7 @@
 package map;
 
+import Player.Player;
+
 import java.util.Random;
 
 public class Map {
@@ -7,6 +9,9 @@ public class Map {
     int height=10;
     MapField[][] map;
     int fieldsCount= width*height;
+    int playerPosX=2;
+    int playerPosY=8;
+    Player player = new Player();
 
 
     public Map() {
@@ -28,65 +33,122 @@ public class Map {
                     switch (field) {
                         case 0:
                             if(ratio>5) {
-                                map[i][j] = new Grass();
-                                System.out.print("|Gr|");
+//                                isItPlayer(i,j ,"|Gr|" );
+                                if(i==playerPosX && j== playerPosY){
+                                    System.out.print("|00|");
+                                }else {
+                                    map[i][j] = new Grass();
+                                    System.out.print("|Gr|");
+                                }
                             }else{
-                                map[i][j] = new MapField();
-                                System.out.print("|  |");
+                                if(i==playerPosX && j== playerPosY){
+                                    System.out.print("|00|");
+                                }else {
+                                    map[i][j] = new MapField();
+                                    System.out.print("|  |");
+                                }
                             }
                             break;
                         case 1:
                             if(ratio>5) {
-                                map[i][j] = new Tree();
-                                System.out.print("|Tr|");
+                                if(i==playerPosX && j== playerPosY){
+                                    System.out.print("|00|");
+                                }else {
+                                    map[i][j] = new Tree();
+                                    System.out.print("|Tr|");
+                                }
                             }else{
-                                map[i][j] = new MapField();
-                                System.out.print("|  |");
+                                if(i==playerPosX && j== playerPosY){
+                                    System.out.print("|00|");
+                                }else {
+                                    map[i][j] = new MapField();
+                                    System.out.print("|  |");
+                                }
                             }
                             break;
                         case 2:
                             if(ratio>5) {
-                                map[i][j] = new Stone();
-                                System.out.print("|St|");
+                                if(i==playerPosX && j== playerPosY){
+                                    System.out.print("|00|");
+                                }else {
+                                    map[i][j] = new Stone();
+                                    System.out.print("|St|");
+                                }
                             }else{
-                                map[i][j] = new MapField();
-                                System.out.print("|  |");
+                                if(i==playerPosX && j== playerPosY){
+                                    System.out.print("|00|");
+                                }else {
+                                    map[i][j] = new MapField();
+                                    System.out.print("|  |");
+                                }
                             }
                             break;
                         case 3:
                             if(ratio>5) {
-                                map[i][j] = new Flower();
-                                System.out.print("|Fl|");
+                                if(i==playerPosX && j== playerPosY){
+                                    System.out.print("|00|");
+                                }else {
+                                    map[i][j] = new Flower();
+                                    System.out.print("|Fl|");
+                                }
                             }else{
-                                map[i][j] = new MapField();
-                                System.out.print("|  |");
+                                if(i==playerPosX && j== playerPosY){
+                                    System.out.print("|00|");
+                                }else {
+                                    map[i][j] = new MapField();
+                                    System.out.print("|  |");
+                                }
                             }
                             break;
                         case 4:
                             if(ratio>5) {
-                                map[i][j] = new Twig();
-                                System.out.print("|Tw|");
+                                if(i==playerPosX && j== playerPosY){
+                                    System.out.print("|00|");
+                                }else {
+                                    map[i][j] = new Twig();
+                                    System.out.print("|Tw|");
+                                }
                             }else{
-                                map[i][j] = new MapField();
-                                System.out.print("|  |");
+                                if(i==playerPosX && j== playerPosY){
+                                System.out.print("|00|");
+                                 }else {
+                                    map[i][j] = new MapField();
+                                    System.out.print("|  |");
+                                }
                             }
                             break;
                         case 5:
                             if(ratio>5) {
-                                map[i][j] = new Carrot();
-                                System.out.print("|Cr|");
+                                if(i==playerPosX && j== playerPosY){
+                                    System.out.print("|00|");
+                                }else {
+                                    map[i][j] = new Carrot();
+                                    System.out.print("|Cr|");
+                                }
                             }else{
-                                map[i][j] = new MapField();
-                                System.out.print("|  |");
+                                if(i==playerPosX && j== playerPosY){
+                                    System.out.print("|00|");
+                                }else {
+                                    map[i][j] = new MapField();
+                                    System.out.print("|  |");
+                                }
                             }
                             break;
                         case 6:
                             if(ratio>5) {
-                                map[i][j] = new Berry();
-                                System.out.print("|Be|");
+                                if(i==playerPosX && j== playerPosY){
+                                    System.out.print("|00|");
+                                }else {
+                                    map[i][j] = new Berry();
+                                    System.out.print("|Be|");
+                                }
                             }else{
-                                map[i][j] = new MapField();
-                                System.out.print("|  |");
+                                if(i==playerPosX && j== playerPosY){
+                                    System.out.print("|00|");
+                                }else {
+                                    map[i][j] = new MapField();
+                                    System.out.print("|  |");
+                                }
                             }
                             break;
                         default:
@@ -95,12 +157,43 @@ public class Map {
                     }
                     notfree++;
                 }
+
             }
             System.out.println();
         }
 
 
         }
+
+        public void isItPlayer(int i, int j, String fieldname){
+                if(i==playerPosX && j== playerPosY){
+                    System.out.print("|00|");
+                }else{
+                    System.out.print(fieldname);
+                    switch (fieldname){
+                        case "|Gr|" : map[i][j] = new Grass();
+                            System.out.print(fieldname);
+                            break;
+//                        case "|Be|" : map[i][j] = new Berry();
+//                            break;
+//                        case "|Ca|" : map[i][j] = new Carrot();
+//                            break;
+//                        case "|Fl|" : map[i][j] = new Flower();
+//                            break;
+//                        case "|St|" : map[i][j] = new Stone();
+//                            break;
+//                        case "|Tr|" : map[i][j] = new Tree();
+//                            break;
+//                        case "|Tw|" : map[i][j] = new Twig();
+//                            break;
+                        default:
+                            System.out.print("|  |");
+                            break;
+
+                    }
+                }
+        }
+
         //végigmegy +1 random switchben mehgínzi melyik
 //        public void MapObjects(){
 //            int notfree=0;
