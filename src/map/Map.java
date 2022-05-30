@@ -3,23 +3,25 @@ package map;
 import Player.Player;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Map {
     int width=10;
     int height=10;
     MapField[][] map;
     int fieldsCount= width*height;
-    int playerPosX=2;
-    int playerPosY=8;
+    int playerPosX=1;
+    int playerPosY=9;
     Player player = new Player();
 
 
     public Map() {
 
-        MapField[][] map = new MapField[width][height];
-        int notfree=0;
+         map = new MapField[width][height];
 
-
+    }
+    public void mapWrite(){
+        int notfree = 0;
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
 
@@ -161,6 +163,37 @@ public class Map {
             }
             System.out.println();
         }
+
+
+        }
+
+        public void playerPos(){
+
+            System.out.println("Direction (l, r, u, d): ");
+            Scanner in = new Scanner(System.in);
+            String direction = in.nextLine();
+            String directionName;
+            switch (direction){
+                case "l": playerPosY = playerPosY-1;
+                    directionName="left";
+                    break;
+                case "r": playerPosY = playerPosY+1;
+                    directionName="right";
+                    break;
+                case "u": playerPosX = playerPosX-1;
+                    directionName="up";
+                    break;
+                case "d": playerPosX = playerPosX+1;
+                    directionName="down";
+                    break;
+                default:
+                    directionName = "";
+            }
+            System.out.println("New step is " + directionName + "\nAnd the new position: ("+ playerPosX + ";" + playerPosY + ")" );
+
+
+            mapWrite();
+            playerPos();
 
 
         }
