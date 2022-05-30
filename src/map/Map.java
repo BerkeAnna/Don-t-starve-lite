@@ -175,15 +175,27 @@ public class Map {
             String directionName;
             switch (direction){
                 case "l": playerPosY = playerPosY-1;
+                    if(playerPosY<0){
+                        playerPosY=0;
+                    }
                     directionName="left";
                     break;
                 case "r": playerPosY = playerPosY+1;
+                    if(playerPosY>=width){
+                        playerPosY=width-1;
+                    }
                     directionName="right";
                     break;
                 case "u": playerPosX = playerPosX-1;
+                    if(playerPosX<0){
+                        playerPosX=0;
+                    }
                     directionName="up";
                     break;
                 case "d": playerPosX = playerPosX+1;
+                    if(playerPosX>=height){
+                        playerPosX=height-1;
+                    }
                     directionName="down";
                     break;
                 default:
