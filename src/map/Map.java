@@ -2,6 +2,7 @@ package map;
 
 import Player.Player;
 
+import java.sql.SQLOutput;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -11,17 +12,16 @@ public class Map {
     MapField[][] map;
     int fieldsCount= width*height;
     int playerPosX=1;
-    int playerPosY=1;
+    int playerPosY=5;
     Player player = new Player();
 
 
     public Map() {
-
          map = new MapField[width][height];
-
+         mapFieldType();
     }
-    //TODO: problem: map is generated after every step
-    public void mapWrite(){
+
+    public void mapFieldType(){
         int notfree = 0;
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
@@ -38,119 +38,119 @@ public class Map {
                             if(ratio>5) {
 //                                isItPlayer(i,j ,"|Gr|" );
                                 if(i==playerPosX && j== playerPosY){
-                                    System.out.print("|00|");
+//                                    System.out.print("|00|");
                                 }else {
                                     map[i][j] = new Grass();
-                                    System.out.print("|Gr|");
+//                                    System.out.print("|Gr|");
                                 }
                             }else{
                                 if(i==playerPosX && j== playerPosY){
-                                    System.out.print("|00|");
+//                                    System.out.print("|00|");
                                 }else {
                                     map[i][j] = new MapField();
-                                    System.out.print("|  |");
+//                                    System.out.print("|  |");
                                 }
                             }
                             break;
                         case 1:
                             if(ratio>5) {
                                 if(i==playerPosX && j== playerPosY){
-                                    System.out.print("|00|");
+//                                    System.out.print("|00|");
                                 }else {
                                     map[i][j] = new Tree();
-                                    System.out.print("|Tr|");
+//                                    System.out.print("|Tr|");
                                 }
                             }else{
                                 if(i==playerPosX && j== playerPosY){
-                                    System.out.print("|00|");
+//                                    System.out.print("|00|");
                                 }else {
                                     map[i][j] = new MapField();
-                                    System.out.print("|  |");
+//                                    System.out.print("|  |");
                                 }
                             }
                             break;
                         case 2:
                             if(ratio>5) {
                                 if(i==playerPosX && j== playerPosY){
-                                    System.out.print("|00|");
+//                                    System.out.print("|00|");
                                 }else {
                                     map[i][j] = new Stone();
-                                    System.out.print("|St|");
+//                                    System.out.print("|St|");
                                 }
                             }else{
                                 if(i==playerPosX && j== playerPosY){
-                                    System.out.print("|00|");
+//                                    System.out.print("|00|");
                                 }else {
                                     map[i][j] = new MapField();
-                                    System.out.print("|  |");
+//                                    System.out.print("|  |");
                                 }
                             }
                             break;
                         case 3:
                             if(ratio>5) {
                                 if(i==playerPosX && j== playerPosY){
-                                    System.out.print("|00|");
+//                                    System.out.print("|00|");
                                 }else {
                                     map[i][j] = new Flower();
-                                    System.out.print("|Fl|");
+//                                    System.out.print("|Fl|");
                                 }
                             }else{
                                 if(i==playerPosX && j== playerPosY){
-                                    System.out.print("|00|");
+//                                    System.out.print("|00|");
                                 }else {
                                     map[i][j] = new MapField();
-                                    System.out.print("|  |");
+//                                    System.out.print("|  |");
                                 }
                             }
                             break;
                         case 4:
                             if(ratio>5) {
                                 if(i==playerPosX && j== playerPosY){
-                                    System.out.print("|00|");
+//                                    System.out.print("|00|");
                                 }else {
                                     map[i][j] = new Twig();
-                                    System.out.print("|Tw|");
+//                                    System.out.print("|Tw|");
                                 }
                             }else{
                                 if(i==playerPosX && j== playerPosY){
-                                System.out.print("|00|");
+//                                System.out.print("|00|");
                                  }else {
                                     map[i][j] = new MapField();
-                                    System.out.print("|  |");
+//                                    System.out.print("|  |");
                                 }
                             }
                             break;
                         case 5:
                             if(ratio>5) {
                                 if(i==playerPosX && j== playerPosY){
-                                    System.out.print("|00|");
+//                                    System.out.print("|00|");
                                 }else {
                                     map[i][j] = new Carrot();
-                                    System.out.print("|Cr|");
+//                                    System.out.print("|Cr|");
                                 }
                             }else{
                                 if(i==playerPosX && j== playerPosY){
-                                    System.out.print("|00|");
+//                                    System.out.print("|00|");
                                 }else {
                                     map[i][j] = new MapField();
-                                    System.out.print("|  |");
+//                                    System.out.print("|  |");
                                 }
                             }
                             break;
                         case 6:
                             if(ratio>5) {
                                 if(i==playerPosX && j== playerPosY){
-                                    System.out.print("|00|");
+//                                    System.out.print("|00|");
                                 }else {
                                     map[i][j] = new Berry();
-                                    System.out.print("|Be|");
+//                                    System.out.print("|Be|");
                                 }
                             }else{
                                 if(i==playerPosX && j== playerPosY){
-                                    System.out.print("|00|");
+//                                    System.out.print("|00|");
                                 }else {
                                     map[i][j] = new MapField();
-                                    System.out.print("|  |");
+//                                    System.out.print("|  |");
                                 }
                             }
                             break;
@@ -164,8 +164,34 @@ public class Map {
             }
             System.out.println();
         }
+        }
 
+        public void writeMap() {
 
+            for (int i = 0; i < map.length; i++) {
+                for (int j = 0; j < map[i].length; j++) {
+                    if (i == playerPosX && j == playerPosY) {
+                        System.out.print("|00|");
+                    } else if (map[i][j] instanceof Berry ) {
+                        System.out.print("|Be|");
+                    } else if (map[i][j] instanceof Carrot) {
+                        System.out.print("|Ca|");
+                    } else if (map[i][j] instanceof Grass) {
+                        System.out.print("|Ga|");
+                    } else if (map[i][j] instanceof Stone) {
+                        System.out.print("|St|");
+                    } else if (map[i][j] instanceof Tree) {
+                        System.out.print("|Te|");
+                    } else if (map[i][j] instanceof Twig) {
+                        System.out.print("|Tw|");
+                    } else if (map[i][j] instanceof Water) {
+                        System.out.print("|~~|");
+                    } else {
+                        System.out.print("|  |");
+                    }
+                }
+                System.out.println();
+            }
         }
 
         public void playerPos(){
@@ -180,37 +206,42 @@ public class Map {
                         playerPosY=0;
                     }
                     directionName="left";
-                    putInTheBag("l");
+                    player.pickUpItem(map, playerPosX, playerPosY);
                     break;
                 case "r": playerPosY = playerPosY+1;
                     if(playerPosY>=width){
                         playerPosY=width-1;
                     }
                     directionName="right";
-                    putInTheBag("r");
+                    player.pickUpItem(map, playerPosX, playerPosY);
                     break;
                 case "u": playerPosX = playerPosX-1;
                     if(playerPosX<0){
                         playerPosX=0;
                     }
                     directionName="up";
-                    putInTheBag("u");
+                    player.pickUpItem(map, playerPosX, playerPosY);
                     break;
                 case "d": playerPosX = playerPosX+1;
                     if(playerPosX>=height){
                         playerPosX=height-1;
                     }
                     directionName="down";
-                    putInTheBag("d");
+                    player.pickUpItem(map, playerPosX, playerPosY);
                     break;
                 default:
                     directionName = "";
             }
             System.out.println("New step is " + directionName + "\nAnd the new position: ("+ playerPosX + ";" + playerPosY + ")" );
+            player.writePlayerBag();
+            player.toString();
 
 
-            mapWrite();
+//            mapFieldType();
+            writeMap();
             playerPos();
+
+
 
 
         }
