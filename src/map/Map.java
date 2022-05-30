@@ -177,7 +177,7 @@ public class Map {
                     } else if (map[i][j] instanceof Carrot) {
                         System.out.print("|Ca|");
                     } else if (map[i][j] instanceof Grass) {
-                        System.out.print("|Ga|");
+                        System.out.print("|Gr|");
                     } else if (map[i][j] instanceof Stone) {
                         System.out.print("|St|");
                     } else if (map[i][j] instanceof Tree) {
@@ -235,6 +235,7 @@ public class Map {
             System.out.println("New step is " + directionName + "\nAnd the new position: ("+ playerPosX + ";" + playerPosY + ")" );
             player.writePlayerBag();
             player.toString();
+
 
 
 //            mapFieldType();

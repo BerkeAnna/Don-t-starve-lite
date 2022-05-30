@@ -1,6 +1,7 @@
 package Player;
 
 import map.*;
+import Player.Axe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,9 @@ public class Player {
     private int tree;
     private int twig;
     private int flower;
+    private int axe;
+   // Axe axe = new Axe();
+
 
     public Player() {
         this.HP=100;
@@ -164,6 +168,7 @@ public class Player {
   public void writePlayerBag(){
         System.out.println("Berry: " + berry + " Carrot: " + carrot + " Flower: "+ flower + " Grass: " + grass + " Stone: " + stone +
                 " Tree: " + tree + " Twig: "+ twig );
+
   }
 
 

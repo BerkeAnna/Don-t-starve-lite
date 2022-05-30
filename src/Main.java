@@ -1,5 +1,6 @@
 import Player.Player;
 import map.Map;
+import Player.Axe;
 
 public class Main {
 
