@@ -11,7 +11,7 @@ public class Map {
     MapField[][] map;
     int fieldsCount= width*height;
     int playerPosX=1;
-    int playerPosY=9;
+    int playerPosY=1;
     Player player = new Player();
 
 
@@ -20,6 +20,7 @@ public class Map {
          map = new MapField[width][height];
 
     }
+    //TODO: problem: map is generated after every step
     public void mapWrite(){
         int notfree = 0;
         for (int i = 0; i < map.length; i++) {
@@ -179,24 +180,28 @@ public class Map {
                         playerPosY=0;
                     }
                     directionName="left";
+                    putInTheBag("l");
                     break;
                 case "r": playerPosY = playerPosY+1;
                     if(playerPosY>=width){
                         playerPosY=width-1;
                     }
                     directionName="right";
+                    putInTheBag("r");
                     break;
                 case "u": playerPosX = playerPosX-1;
                     if(playerPosX<0){
                         playerPosX=0;
                     }
                     directionName="up";
+                    putInTheBag("u");
                     break;
                 case "d": playerPosX = playerPosX+1;
                     if(playerPosX>=height){
                         playerPosX=height-1;
                     }
                     directionName="down";
+                    putInTheBag("d");
                     break;
                 default:
                     directionName = "";
@@ -208,6 +213,34 @@ public class Map {
             playerPos();
 
 
+        }
+
+        public void putInTheBag(String step){
+            switch (step){
+                case "r" :
+                    if(map[playerPosX][playerPosY-1] instanceof Berry){
+                            player.newBagItem("Berry");
+                    }
+                    else if(map[playerPosX][playerPosY-1] instanceof Carrot){
+                        player.newBagItem("Carrot");
+                    }
+                    else if(map[playerPosX][playerPosY-1] instanceof Flower){
+                        player.newBagItem("Flower");
+                    }
+                    else if(map[playerPosX][playerPosY-1] instanceof Grass){
+                        player.newBagItem("Grass");
+                    }
+                    else if(map[playerPosX][playerPosY-1] instanceof Stone){
+                        player.newBagItem("Stone");
+                    }
+                    else if(map[playerPosX][playerPosY-1] instanceof Tree){
+                        player.newBagItem("Tree");
+                    }
+                    else if(map[playerPosX][playerPosY-1] instanceof Twig){
+                        player.newBagItem("Twig");
+                    }
+                    player.writeBagItems();
+            }
         }
 
         public void isItPlayer(int i, int j, String fieldname){

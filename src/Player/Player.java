@@ -1,9 +1,14 @@
 package Player;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Player {
     private double HP;
     private double hunger;
     private double brain;
+    //TODO: items variables, and methods for objects like fire or pick. Like: public void makePick(int tree_count, grass_count){ tree--; grass--; pick++}
+    private List<String> bag = new ArrayList<>();
 
     public Player() {
         this.HP=100;
@@ -35,5 +40,22 @@ public class Player {
         this.brain = brain-1;
     }
 
+    public List<String> getBag() {
+        return bag;
+    }
+
+    public void setBag(List<String> bag) {
+        this.bag = bag;
+    }
+    public void newBagItem(String name){
+        bag.add(name);
+
+    }
+
+    public void writeBagItems(){
+        for (int i=0; i < bag.size(); i++) {
+            System.out.println(bag.get(i) + " ");
+        }
+    }
 
 }
