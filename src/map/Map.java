@@ -15,6 +15,7 @@ public class Map {
     int playerPosY=5;
     Player player = new Player();
     public boolean night = false;
+    Twig twig = new Twig();
 
 
     public Map() {
@@ -168,12 +169,12 @@ public class Map {
 
         public void playerPos(){
 
-            System.out.println("Direction (l, r, u, d): ");
+            System.out.println("Direction (w, a, s, d): ");
             Scanner in = new Scanner(System.in);
             String direction = in.nextLine();
             String directionName;
             switch (direction){
-                case "l": playerPosY = playerPosY-1;
+                case "a": playerPosY = playerPosY-1;
                     if(playerPosY<0){
                         playerPosY=0;
                     }
@@ -181,7 +182,7 @@ public class Map {
                     player.pickUpItem(map, playerPosX, playerPosY);
                     playerinfo();
                     break;
-                case "r": playerPosY = playerPosY+1;
+                case "d": playerPosY = playerPosY+1;
                     if(playerPosY>=width){
                         playerPosY=width-1;
                     }
@@ -189,7 +190,7 @@ public class Map {
                     player.pickUpItem(map, playerPosX, playerPosY);
                     playerinfo();
                     break;
-                case "u": playerPosX = playerPosX-1;
+                case "w": playerPosX = playerPosX-1;
                     if(playerPosX<0){
                         playerPosX=0;
                     }
@@ -197,7 +198,7 @@ public class Map {
                     player.pickUpItem(map, playerPosX, playerPosY);
                     playerinfo();
                     break;
-                case "d": playerPosX = playerPosX+1;
+                case "s": playerPosX = playerPosX+1;
                     if(playerPosX>=height){
                         playerPosX=height-1;
                     }
@@ -205,13 +206,16 @@ public class Map {
                     player.pickUpItem(map, playerPosX, playerPosY);
                     playerinfo();
                     break;
+                case "axe":
+                    player.playerDoTools("axe");
                 default:
                     directionName = "";
             }
             System.out.println("New step is " + directionName + "\nAnd the new position: ("+ playerPosX + ";" + playerPosY + ")" );
             System.out.println("Player HP: " + player.getHP() + " Brain: " + player.getBrain() + " Hunger: " + player.getHunger());
+            System.out.println("Twig: " + twig.getPiece());
 //            player.writePlayerBag();
-            player.toString();
+//            player.toString();
 
 
 

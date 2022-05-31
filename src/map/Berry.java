@@ -11,6 +11,11 @@ public class Berry extends MapField implements ItemPlus {
         piece++;
     }
 
+    @Override
+    public void minus(int number) {
+        this.piece-=number;
+    }
+
 
     @Override
     public String toString() {

@@ -12,6 +12,11 @@ public class Tree extends MapField implements ItemPlus{
     }
 
     @Override
+    public void minus(int number) {
+        this.piece-=number;
+    }
+
+    @Override
     public String toString() {
         return "+1 tree\n";
     }

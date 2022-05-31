@@ -5,6 +5,7 @@ import Player.Axe;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Player {
     private double HP;
@@ -18,7 +19,7 @@ public class Player {
     public Stone stone = new Stone();
     public Tree tree = new Tree();
     public Twig twig = new Twig();
-   // Axe axe = new Axe();
+    Axe axe = new Axe();
 
 
     public Player() {
@@ -98,6 +99,14 @@ public class Player {
                         }
                     }
             }
+        }
+
+    }
+
+    public void playerDoTools(String tool){
+        if(Objects.equals(tool, "axe")){
+            axe.createAxe(grass.getPiece(),twig.getPiece());
+//            System.out.println(axe);
         }
 
     }
