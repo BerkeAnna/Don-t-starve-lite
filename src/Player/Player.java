@@ -22,33 +22,33 @@ public class Player {
 
 
     public Player() {
-        this.HP=100;
-        this.brain=100;
-        this.hunger=100;
+        this.HP=100.0;
+        this.brain=100.0;
+        this.hunger=100.0;
     }
 
     public double getHP() {
         return HP;
     }
 
-    public void setHP(int HP) {
-        this.HP = HP-1;
+    public void setHP(double HP) {
+        this.HP -= HP;
     }
 
     public double getHunger() {
         return hunger;
     }
 
-    public void setHunger(int hunger) { //gettert kap
-        this.hunger = hunger-1;
+    public void setHunger(double hunger) { //gettert kap
+        this.hunger -= hunger;
     }
 
     public double getBrain() {
         return brain;
     }
 
-    public void setBrain(int brain) {
-        this.brain = brain-1;
+    public void setBrain(double brain) {
+        this.brain -= brain;
     }
 
 
