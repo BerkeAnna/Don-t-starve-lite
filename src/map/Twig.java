@@ -1,12 +1,13 @@
 package map;
 
-public class Twig extends MapField{
+public class Twig extends MapField implements ItemPlus{
     private int piece;
     public Twig() {
         this.piece=0;
 
     }
 
+    @Override
     public void plus() {
         piece++;
     }
@@ -15,4 +16,6 @@ public class Twig extends MapField{
     public String toString() {
         return "+1 twig\n";
     }
+
+
 }

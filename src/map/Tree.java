@@ -1,12 +1,12 @@
 package map;
 
-public class Tree extends MapField{
+public class Tree extends MapField implements ItemPlus{
     private int piece;
     public Tree() {
         this.piece=0;
 
     }
-
+    @Override
     public void plus() {
         piece++;
     }
