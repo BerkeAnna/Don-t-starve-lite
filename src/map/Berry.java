@@ -6,6 +6,15 @@ public class Berry extends MapField implements ItemPlus {
     public Berry() {
         this.piece=0;
     }
+
+    public int getPiece() {
+        return piece;
+    }
+
+    public void setPiece(int piece) {
+        this.piece = piece;
+    }
+
     @Override
     public void plus() {
         piece++;

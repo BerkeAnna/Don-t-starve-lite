@@ -7,8 +7,9 @@ public class Grass extends MapField implements ItemPlus {
         return piece;
     }
 
+
     public void setPiece(int piece) {
-        this.piece -= piece;
+        this.piece = piece;
     }
 
     public Grass() {

@@ -6,6 +6,15 @@ public class Tree extends MapField implements ItemPlus{
         this.piece=0;
 
     }
+
+    public int getPiece() {
+        return piece;
+    }
+
+    public void setPiece(int piece) {
+        this.piece = piece;
+    }
+
     @Override
     public void plus() {
         piece++;

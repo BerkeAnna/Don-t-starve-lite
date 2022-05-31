@@ -149,12 +149,14 @@ public class Map {
                         System.out.print("|Be|");
                     } else if (map[i][j] instanceof Carrot) {
                         System.out.print("|Ca|");
-                    } else if (map[i][j] instanceof Grass) {
+                    }else if (map[i][j] instanceof Flower) {
+                        System.out.print("|Fl|");
+                    }else if (map[i][j] instanceof Grass) {
                         System.out.print("|Gr|");
                     } else if (map[i][j] instanceof Stone) {
                         System.out.print("|St|");
                     } else if (map[i][j] instanceof Tree) {
-                        System.out.print("|Te|");
+                        System.out.print("|Tr|");
                     } else if (map[i][j] instanceof Twig) {
                         System.out.print("|Tw|");
                     } else if (map[i][j] instanceof Water) {
@@ -208,12 +210,17 @@ public class Map {
                     break;
                 case "axe":
                     player.playerDoTools("axe");
+                case "pick":
+                    player.playerDoTools("pick");
+                case "campfire":
+                    player.playerDoTools("campfire");
+                case "wreath":
+                    player.playerDoTools("wreath");
                 default:
                     directionName = "";
             }
             System.out.println("New step is " + directionName + "\nAnd the new position: ("+ playerPosX + ";" + playerPosY + ")" );
             System.out.println("Player HP: " + player.getHP() + " Brain: " + player.getBrain() + " Hunger: " + player.getHunger());
-            System.out.println("Twig: " + twig.getPiece());
 //            player.writePlayerBag();
 //            player.toString();
 
