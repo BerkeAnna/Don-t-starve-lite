@@ -233,7 +233,7 @@ public class Map {
                     directionName = "";
             }
             System.out.println("New step is " + directionName + "\nAnd the new position: ("+ playerPosX + ";" + playerPosY + ")" );
-            player.writePlayerBag();
+//            player.writePlayerBag();
             player.toString();
 
 
