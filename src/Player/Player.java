@@ -90,11 +90,21 @@ public class Player {
                             grass.setPiece(grass.getPiece()+1);
                             System.out.print(grass);
                         } else if (map[i][j] instanceof Stone) {
-                            stone.setPiece(stone.getPiece()+1);
-                            System.out.print(stone);
+                            if(pick.getPiece()>0) {
+                                stone.setPiece(stone.getPiece() + 1);
+                                pick.brokePick();
+                                System.out.print(stone);
+//                                System.out.println(stone.getPiece());
+//                                System.out.println(pick.getLife());
+                            }
                         } else if (map[i][j] instanceof Tree) {
-                            tree.setPiece(tree.getPiece()+1);
-                            System.out.print(tree);
+                            if(axe.getPiece()>0) {
+                                tree.setPiece(tree.getPiece() + 1);
+                                axe.brokeAxe();
+                                System.out.print(tree);
+//                                System.out.println(tree.getPiece());
+//                                System.out.println(axe.getLife());
+                            }
                         } else if (map[i][j] instanceof Twig) {
                             twig.setPiece(twig.getPiece()+1);
                             System.out.println("\nTwig db: " + twig.getPiece());

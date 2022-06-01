@@ -2,9 +2,18 @@ package Player;
 
 public class Pick {
     private int piece;
+    private int life;
 
     public Pick() {
+        this.life=8;
+    }
 
+    public int getLife() {
+        return life;
+    }
+
+    public void setLife(int life) {
+        this.life = life;
     }
 
     public int getPiece() {
@@ -22,7 +31,15 @@ public class Pick {
         }else{
             System.out.println("You can't make Picks!");
         }
+    }
 
+    public void brokePick(){
+        setLife(getLife()-1);
+        if(this.life==0){
+            System.out.println("Your pick is broken!\n- 1 pick");
+            this.piece--;
+            this.life=8;
+        }
 
     }
 

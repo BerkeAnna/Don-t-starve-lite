@@ -37,7 +37,7 @@ public class Map {
                     int field = random.nextInt(7);
                     switch (field) {
                         case 0:
-                            if(ratio>5) {
+                            if(ratio>6) {
                                 if(i==playerPosX && j== playerPosY){
                                 }else {
                                     map[i][j] = new Grass();
@@ -63,7 +63,7 @@ public class Map {
                             }
                             break;
                         case 2:
-                            if(ratio>5) {
+                            if(ratio>8) {
                                 if(i==playerPosX && j== playerPosY){
                                 }else {
                                     map[i][j] = new Stone();
@@ -76,7 +76,7 @@ public class Map {
                             }
                             break;
                         case 3:
-                            if(ratio>5) {
+                            if(ratio>8) {
                                 if(i==playerPosX && j== playerPosY){
                                 }else {
                                     map[i][j] = new Flower();
@@ -89,7 +89,7 @@ public class Map {
                             }
                             break;
                         case 4:
-                            if(ratio>5) {
+                            if(ratio>6) {
                                 if(i==playerPosX && j== playerPosY){
                                 }else {
                                     map[i][j] = new Twig();

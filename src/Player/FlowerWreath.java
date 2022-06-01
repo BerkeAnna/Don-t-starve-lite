@@ -23,6 +23,7 @@ public class FlowerWreath {
             System.out.println("You can't make flower wreath!");
         }
 
-
     }
+
+    //TODO: virágkoszorú: 15 napig tart ki, utána hatását veszti
 }
