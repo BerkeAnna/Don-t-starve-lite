@@ -15,6 +15,7 @@ public class Map {
     int playerPosY=5;
     Player player = new Player();
     public boolean night = false;
+    int stepscount=0;
     Twig twig = new Twig();
 
 
@@ -102,7 +103,7 @@ public class Map {
                             }
                             break;
                         case 5:
-                            if(ratio>5) {
+                            if(ratio>8) {
                                 if(i==playerPosX && j== playerPosY){
                                 }else {
                                     map[i][j] = new Carrot();
@@ -115,7 +116,7 @@ public class Map {
                             }
                             break;
                         case 6:
-                            if(ratio>5) {
+                            if(ratio>8) {
                                 if(i==playerPosX && j== playerPosY){
                                 }else {
                                     map[i][j] = new Berry();
@@ -175,6 +176,8 @@ public class Map {
             Scanner in = new Scanner(System.in);
             String direction = in.nextLine();
             String directionName;
+            stepscount++;
+            stepCounter(stepscount);
             switch (direction){
                 case "a": playerPosY = playerPosY-1;
                     if(playerPosY<0){
@@ -216,11 +219,20 @@ public class Map {
                     player.playerDoTools("campfire");
                 case "wreath":
                     player.playerDoTools("wreath");
+                case "berry":
+                    player.playerDoTools("berry");
+                case "boiled berry":
+                    player.playerDoTools("boiled berry");
+                case "carrot":
+                    player.playerDoTools("carrot");
+                case "boiled carrot":
+                    player.playerDoTools("boiled carrot");
                 default:
                     directionName = "";
             }
             System.out.println("New step is " + directionName + "\nAnd the new position: ("+ playerPosX + ";" + playerPosY + ")" );
             System.out.println("Player HP: " + player.getHP() + " Brain: " + player.getBrain() + " Hunger: " + player.getHunger());
+            System.out.println("Night: " + night );
 //            player.writePlayerBag();
 //            player.toString();
 
@@ -233,11 +245,24 @@ public class Map {
         }
 
         public void playerinfo(){
-            player.setHunger(0.4);
+            player.setHunger(player.getHunger()-0.4);
             if(night) {
-                player.setBrain(0.4);
+                player.setBrain(player.getBrain()-0.4);
             }
         }
+        public void stepCounter(int steps){
+            if(steps<=5){
+                night=false;
+            }else{
+                night=true;
+            }
+            if(steps==8){
+                stepscount=0;
+            }
+
+        }
+
+
 
         public void putInTheBag(String step){
             switch (step){

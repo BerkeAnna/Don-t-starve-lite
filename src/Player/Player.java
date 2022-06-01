@@ -37,7 +37,12 @@ public class Player {
     }
 
     public void setHP(double HP) {
-        this.HP -= HP;
+        if(HP>100){
+            HP=100;
+        }else if(HP<0){
+            HP = 0;
+        }
+        this.HP = HP;
     }
 
     public double getHunger() {
@@ -45,7 +50,12 @@ public class Player {
     }
 
     public void setHunger(double hunger) { //gettert kap
-        this.hunger -= hunger;
+        if(hunger>100){
+            hunger=100;
+        }else if(hunger<0){
+            hunger = 0;
+        }
+        this.hunger = hunger;
     }
 
     public double getBrain() {
@@ -53,7 +63,12 @@ public class Player {
     }
 
     public void setBrain(double brain) {
-        this.brain -= brain;
+        if(brain>100){
+            brain=100;
+        }else if(brain<0){
+            brain = 0;
+        }
+        this.brain = brain;
     }
 
 
@@ -147,6 +162,40 @@ public class Player {
             flowerWreath.createWreath(flower.getPiece());
             flower.setPiece(flower.getPiece()-10);
             System.out.println("Flower: " + flower.getPiece());
+
+        }
+        else if(Objects.equals(tool, "berry")){
+            berry.eatBerry();
+            setHP(getHP()-5.0);
+            setHunger(getHunger()+10.0);
+            setBrain(getBrain()+1.0);
+            System.out.println("berry: " + berry.getPiece());
+            System.out.println("Brain: " + this.brain + " Hunger: " + this.hunger + " HP: " + this.HP);
+
+        }
+        else if(Objects.equals(tool, "boiled berry")){
+            berry.eatBerry();
+            setHunger(getHunger()+8.0);
+            setBrain(getBrain()+2.0);
+            System.out.println("berry: " + berry.getPiece());
+            System.out.println("Brain: " + this.brain + " Hunger: " + this.hunger + " HP: " + this.HP);
+
+        }
+        else if(Objects.equals(tool, "carrot")){
+            carrot.eatCarrot();
+            setHP(getHP()-10.0);
+            setBrain(getBrain()+1.0);
+            System.out.println("carrot: " + carrot.getPiece());
+            System.out.println("Brain: " + this.brain + " Hunger: " + this.hunger + " HP: " + this.HP);
+
+        }
+        else if(Objects.equals(tool, "boiled carrot")){
+            carrot.eatCarrot();
+            setHunger(getHunger()+8.0);
+            setHunger(getHunger()+2.0);
+            setBrain(getBrain()+2.0);
+            System.out.println("carrot: " + carrot.getPiece());
+            System.out.println("Brain: " + this.brain + " Hunger: " + this.hunger + " HP: " + this.HP);
 
         }
 

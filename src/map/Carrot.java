@@ -29,4 +29,9 @@ public class Carrot extends MapField implements ItemPlus{
     public String toString() {
         return "+1 carrot\n";
     }
+
+    public void eatCarrot(){
+        setPiece(getPiece()-1);
+        System.out.println("Eat carrot!\n-1 Carrot");
+    }
 }

@@ -31,5 +31,10 @@ public class Berry extends MapField implements ItemPlus {
         return  "+1 berry\n";
     }
 
+    public void eatBerry(){
+        setPiece(getPiece()-1);
+        System.out.println("Eat berry!\n-1 Berry");
+    }
+
 
 }
