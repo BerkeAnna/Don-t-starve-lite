@@ -32,9 +32,9 @@ public class Player {
 
 
     public Player() {
-        this.HP=100.0;
-        this.brain=100.0;
-        this.hunger=100.0;
+        this.HP=10.0;
+        this.brain=10.0;
+        this.hunger=10.0;
     }
 
     public double getHP() {
@@ -163,6 +163,11 @@ public class Player {
     }
 
     public String playerParameters(){
+        if(this.brain <=0 || this.HP <=0 ||this.hunger <=0){
+            System.err.println("-------------------\nGAME OVER\n-------------------");
+            System.exit(0);
+
+        }
         return "Brain: " + two.format(this.brain) + " Hunger: " + two.format(this.hunger) + " HP: " + two.format(this.HP);
     }
 
