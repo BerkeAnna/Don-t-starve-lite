@@ -19,11 +19,13 @@ public class Player {
     public Stone stone = new Stone();
     public Tree tree = new Tree();
     Flower flower = new Flower();
-     Twig twig = new Twig();
+    Twig twig = new Twig();
     Axe axe = new Axe();
     Pick pick = new Pick();
     CampFire campFire = new CampFire();
     FlowerWreath flowerWreath = new FlowerWreath();
+    int campfireX= campFire.getFirePosX();
+    int campfireY= campFire.getFirePosY();
 
     DecimalFormat two = new DecimalFormat("##.00");
 
@@ -74,7 +76,21 @@ public class Player {
         this.brain = brain;
     }
 
+    public int getCampfireX() {
+        return campfireX;
+    }
 
+    public void setCampfireX(int campfireX) {
+        this.campfireX = campfireX;
+    }
+
+    public int getCampfireY() {
+        return campfireY;
+    }
+
+    public void setCampfireY(int campfireY) {
+        this.campfireY = campfireY;
+    }
 
     public List<String> getBag() {
         return bag;
@@ -150,7 +166,7 @@ public class Player {
         return "Brain: " + two.format(this.brain) + " Hunger: " + two.format(this.hunger) + " HP: " + two.format(this.HP);
     }
 
-    public void playerDoTools(String tool){
+    public void playerDoTools(String tool, int playerX, int playerY){
         if(Objects.equals(tool, "axe") && grass.getPiece()>=2 && twig.getPiece()>=3){
             axe.createAxe(grass.getPiece(),twig.getPiece());
             grass.setPiece(grass.getPiece()-2);
@@ -172,6 +188,8 @@ public class Player {
             grass.setPiece(grass.getPiece()-2);
             tree.setPiece(tree.getPiece()-2);
             stone.setPiece(stone.getPiece()-4);
+            campFire.setFirePosX(playerX);
+            campFire.setFirePosY(playerY);
             System.out.println("Grass: " + grass.getPiece());
             System.out.println("tree " + tree.getPiece());
             System.out.println("stone " + stone.getPiece());

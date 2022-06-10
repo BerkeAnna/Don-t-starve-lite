@@ -6,6 +6,8 @@ import java.sql.SQLOutput;
 import java.util.Random;
 import java.util.Scanner;
 
+import static java.lang.Math.abs;
+
 public class Map {
     int width=100;
     int height=100;
@@ -21,6 +23,7 @@ public class Map {
     int mapwriteXright;
     int mapwriteYleft;
     int mapwriteYright;
+    int playerhasfire=0;
     int view = 4; //map size what player see
 
 
@@ -251,35 +254,36 @@ public class Map {
                     playerinfo();
                     break;
                 case "axe":
-                    player.playerDoTools("axe");
+                    player.playerDoTools("axe", playerPosX, playerPosY);
                     minussteps(1);
                     break;
                 case "pick":
-                    player.playerDoTools("pick");
+                    player.playerDoTools("pick", playerPosX, playerPosY);
                     minussteps(1);
                     break;
                 case "campfire":
-                    player.playerDoTools("campfire");
+                    player.playerDoTools("campfire", playerPosX, playerPosY);
+                    playerhasfire++;
                     minussteps(1);
                     break;
                 case "wreath":
-                    player.playerDoTools("wreath");
+                    player.playerDoTools("wreath", playerPosX, playerPosY);
                     minussteps(1);
                     break;
                 case "berry":
-                    player.playerDoTools("berry");
+                    player.playerDoTools("berry", playerPosX, playerPosY);
                     minussteps(1);
                     break;
                 case "boiled berry":
-                    player.playerDoTools("boiled berry");
+                    player.playerDoTools("boiled berry", playerPosX, playerPosY);
                     minussteps(1);
                     break;
                 case "carrot":
-                    player.playerDoTools("carrot");
+                    player.playerDoTools("carrot", playerPosX, playerPosY);
                     minussteps(1);
                     break;
                 case "boiled carrot":
-                    player.playerDoTools("boiled carrot");
+                    player.playerDoTools("boiled carrot", playerPosX, playerPosY);
                     minussteps(1);
                     break;
                 default:
@@ -304,9 +308,13 @@ public class Map {
 
         public void playerinfo(){
             player.setHunger(player.getHunger()-0.4);
-            if(night) {
-                player.setBrain(player.getBrain()-0.4);
-            }
+                    if((night && abs(playerPosX-player.getCampfireX()) + abs(playerPosY- player.getCampfireY()) >3) || ( night && playerhasfire == 0)) {
+                        player.setHP(player.getHP() - 5.0);
+                        player.setBrain(player.getBrain() - 7.0);
+                     }else if(!night){
+                        player.setBrain(player.getBrain()-0.4);
+                    }
+
         }
         public void stepCounter(int steps){
             if(steps<=5){
