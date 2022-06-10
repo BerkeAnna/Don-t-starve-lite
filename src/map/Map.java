@@ -175,7 +175,7 @@ public class Map {
             System.out.println("Direction (w, a, s, d): ");
             Scanner in = new Scanner(System.in);
             String direction = in.nextLine();
-            String directionName;
+            String directionName = null;
             stepscount++;
             stepCounter(stepscount);
             switch (direction){
@@ -184,7 +184,7 @@ public class Map {
                         playerPosY=0;
                     }
                     directionName="left";
-                    player.pickUpItem(map, playerPosX, playerPosY);
+                    stepscount+=player.pickUpItem(map, playerPosX, playerPosY);
                     playerinfo();
                     break;
                 case "d": playerPosY = playerPosY+1;
@@ -192,7 +192,7 @@ public class Map {
                         playerPosY=width-1;
                     }
                     directionName="right";
-                    player.pickUpItem(map, playerPosX, playerPosY);
+                    stepscount+=player.pickUpItem(map, playerPosX, playerPosY);
                     playerinfo();
                     break;
                 case "w": playerPosX = playerPosX-1;
@@ -200,7 +200,7 @@ public class Map {
                         playerPosX=0;
                     }
                     directionName="up";
-                    player.pickUpItem(map, playerPosX, playerPosY);
+                    stepscount+=player.pickUpItem(map, playerPosX, playerPosY);
                     playerinfo();
                     break;
                 case "s": playerPosX = playerPosX+1;
@@ -208,31 +208,47 @@ public class Map {
                         playerPosX=height-1;
                     }
                     directionName="down";
-                    player.pickUpItem(map, playerPosX, playerPosY);
+                    stepscount+=player.pickUpItem(map, playerPosX, playerPosY);
                     playerinfo();
                     break;
                 case "axe":
                     player.playerDoTools("axe");
+                    minussteps(1);
+                    break;
                 case "pick":
                     player.playerDoTools("pick");
+                    minussteps(1);
+                    break;
                 case "campfire":
                     player.playerDoTools("campfire");
+                    minussteps(1);
+                    break;
                 case "wreath":
                     player.playerDoTools("wreath");
+                    minussteps(1);
+                    break;
                 case "berry":
                     player.playerDoTools("berry");
+                    minussteps(1);
+                    break;
                 case "boiled berry":
                     player.playerDoTools("boiled berry");
+                    minussteps(1);
+                    break;
                 case "carrot":
                     player.playerDoTools("carrot");
+                    minussteps(1);
+                    break;
                 case "boiled carrot":
                     player.playerDoTools("boiled carrot");
+                    minussteps(1);
+                    break;
                 default:
                     directionName = "";
             }
-            System.out.println("New step is " + directionName + "\nAnd the new position: ("+ playerPosX + ";" + playerPosY + ")" );
-            System.out.println("Player HP: " + player.getHP() + " Brain: " + player.getBrain() + " Hunger: " + player.getHunger());
-            System.out.println("Night: " + night );
+            System.out.println( "\nAnd the new position: ("+ playerPosX + ";" + playerPosY + ")" );
+            System.out.println(player);
+            System.out.println("Night: " + night + " points: " + stepscount );
 //            player.writePlayerBag();
 //            player.toString();
 
@@ -242,6 +258,9 @@ public class Map {
             writeMap();
             playerPos();
 
+        }
+        public void minussteps(int minus){
+            this.stepscount+=minus;
         }
 
         public void playerinfo(){

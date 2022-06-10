@@ -1,8 +1,8 @@
 package Player;
 
 import map.*;
-import Player.Axe;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -24,6 +24,9 @@ public class Player {
     Pick pick = new Pick();
     CampFire campFire = new CampFire();
     FlowerWreath flowerWreath = new FlowerWreath();
+
+    DecimalFormat two = new DecimalFormat("##.00");
+
 
 
     public Player() {
@@ -91,24 +94,28 @@ public class Player {
         }
     }
 
-    public void pickUpItem(MapField[][] map, int playerX, int playerY){
+    public int pickUpItem(MapField[][] map, int playerX, int playerY){
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {
                     if(i== playerX && j == playerY){
                         if (map[i][j] instanceof Berry ) {
                             berry.setPiece(berry.getPiece()+1);
                             System.out.print(berry);
+                            return 1;
                         } else if (map[i][j] instanceof Carrot) {
                             carrot.setPiece(carrot.getPiece()+1);
                             System.out.print(carrot);
+                            return 1;
                         } else if (map[i][j] instanceof Grass) {
                             grass.setPiece(grass.getPiece()+1);
                             System.out.print(grass);
+                            return 1;
                         } else if (map[i][j] instanceof Stone) {
                             if(pick.getPiece()>0) {
                                 stone.setPiece(stone.getPiece() + 1);
                                 pick.brokePick();
                                 System.out.print(stone);
+                                return 4;
 //                                System.out.println(stone.getPiece());
 //                                System.out.println(pick.getLife());
                             }
@@ -117,19 +124,30 @@ public class Player {
                                 tree.setPiece(tree.getPiece() + 1);
                                 axe.brokeAxe();
                                 System.out.print(tree);
+                                return 3;
 //                                System.out.println(tree.getPiece());
 //                                System.out.println(axe.getLife());
                             }
                         } else if (map[i][j] instanceof Twig) {
                             twig.setPiece(twig.getPiece()+1);
                             System.out.println("\nTwig db: " + twig.getPiece());
+                            return 1;
                         } else if (map[i][j] instanceof Water){
 
                         }
                     }
             }
         }
+    return 0;
+    }
 
+    public int minuspoints(int num){
+        int r=num;
+        return r;
+    }
+
+    public String playerParameters(){
+        return "Brain: " + two.format(this.brain) + " Hunger: " + two.format(this.hunger) + " HP: " + two.format(this.HP);
     }
 
     public void playerDoTools(String tool){
@@ -139,6 +157,7 @@ public class Player {
             twig.setPiece(twig.getPiece()-3);
             System.out.println("Grass: " + grass.getPiece());
             System.out.println("Twig " + twig.getPiece());
+
         }
         else if(Objects.equals(tool, "pick") && grass.getPiece()>=2 && tree.getPiece()>=2){
             pick.createPick(grass.getPiece(),tree.getPiece());
@@ -170,7 +189,6 @@ public class Player {
             setHunger(getHunger()+10.0);
             setBrain(getBrain()+1.0);
             System.out.println("berry: " + berry.getPiece());
-            System.out.println("Brain: " + this.brain + " Hunger: " + this.hunger + " HP: " + this.HP);
 
         }
         else if(Objects.equals(tool, "boiled berry")){
@@ -178,7 +196,6 @@ public class Player {
             setHunger(getHunger()+8.0);
             setBrain(getBrain()+2.0);
             System.out.println("berry: " + berry.getPiece());
-            System.out.println("Brain: " + this.brain + " Hunger: " + this.hunger + " HP: " + this.HP);
 
         }
         else if(Objects.equals(tool, "carrot")){
@@ -186,7 +203,6 @@ public class Player {
             setHP(getHP()-10.0);
             setBrain(getBrain()+1.0);
             System.out.println("carrot: " + carrot.getPiece());
-            System.out.println("Brain: " + this.brain + " Hunger: " + this.hunger + " HP: " + this.HP);
 
         }
         else if(Objects.equals(tool, "boiled carrot")){
@@ -195,13 +211,16 @@ public class Player {
             setHunger(getHunger()+2.0);
             setBrain(getBrain()+2.0);
             System.out.println("carrot: " + carrot.getPiece());
-            System.out.println("Brain: " + this.brain + " Hunger: " + this.hunger + " HP: " + this.HP);
 
         }
 
     }
 
+    //Todo: cselekvéspont csökkentés
 
 
-
+    @Override
+    public String toString() {
+        return playerParameters();
+    }
 }
