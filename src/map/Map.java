@@ -7,16 +7,21 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Map {
-    int width=10;
-    int height=10;
+    int width=100;
+    int height=100;
     MapField[][] map;
     int fieldsCount= width*height;
-    int playerPosX=1;
+    int playerPosX=5;
     int playerPosY=5;
     Player player = new Player();
     public boolean night = false;
     int stepscount=0;
     Twig twig = new Twig();
+    int mapwriteXleft;
+    int mapwriteXright;
+    int mapwriteYleft;
+    int mapwriteYright;
+    int view = 4; //map size what player see
 
 
     public Map() {
@@ -139,11 +144,33 @@ public class Map {
             System.out.println();
         }
         }
-
+        public void mapView(){
+            if(playerPosX-view<0){
+                mapwriteXleft=0;
+            }else{
+                mapwriteXleft=playerPosX-view;
+            }
+            if(playerPosY-view<0){
+                mapwriteYleft=0;
+            }else{
+                mapwriteYleft=playerPosY-view;
+            }
+            if(playerPosX+view>width-1){
+                mapwriteXright=0;
+            }else{
+                mapwriteXright=playerPosX+view;
+            }
+            if(playerPosY+view>width-1){
+                mapwriteYright=0;
+            }else{
+                mapwriteYright=playerPosY+view;
+            }
+        }
         public void writeMap() {
 
-            for (int i = 0; i < map.length; i++) {
-                for (int j = 0; j < map[i].length; j++) {
+            mapView();
+            for (int i = mapwriteXleft; i < mapwriteXright; i++) {
+                for (int j = mapwriteYleft; j < mapwriteYright; j++) {
                     if (i == playerPosX && j == playerPosY) {
                         System.out.print("|00|");
                     } else if (map[i][j] instanceof Berry ) {
