@@ -6,7 +6,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
+//TODO: player and fire ddistance at night
 public class Player {
     private double HP;
     private double hunger;

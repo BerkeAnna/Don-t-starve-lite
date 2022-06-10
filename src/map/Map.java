@@ -139,6 +139,18 @@ public class Map {
                     }
                     notfree++;
                 }
+                    switch (i){
+                        case 0 :
+                            map[i][j] = new Water();
+                        case 99:
+                            map[i][j] = new Water();
+                    }
+                switch (j){
+                    case 0 :
+                        map[i][j] = new Water();
+                    case 99:
+                        map[i][j] = new Water();
+                }
 
             }
             System.out.println();
@@ -207,32 +219,32 @@ public class Map {
             stepCounter(stepscount);
             switch (direction){
                 case "a": playerPosY = playerPosY-1;
-                    if(playerPosY<0){
-                        playerPosY=0;
+                    if(playerPosY<0 || map[playerPosX][playerPosY] instanceof Water){
+                        playerPosY+=1;
                     }
                     directionName="left";
                     stepscount+=player.pickUpItem(map, playerPosX, playerPosY);
                     playerinfo();
                     break;
                 case "d": playerPosY = playerPosY+1;
-                    if(playerPosY>=width){
-                        playerPosY=width-1;
+                    if(playerPosY>=width || map[playerPosX][playerPosY] instanceof Water){
+                        playerPosY-=1;
                     }
                     directionName="right";
                     stepscount+=player.pickUpItem(map, playerPosX, playerPosY);
                     playerinfo();
                     break;
                 case "w": playerPosX = playerPosX-1;
-                    if(playerPosX<0){
-                        playerPosX=0;
+                    if(playerPosX<0 || map[playerPosX][playerPosY] instanceof Water){
+                        playerPosX+=1;
                     }
                     directionName="up";
                     stepscount+=player.pickUpItem(map, playerPosX, playerPosY);
                     playerinfo();
                     break;
                 case "s": playerPosX = playerPosX+1;
-                    if(playerPosX>=height){
-                        playerPosX=height-1;
+                    if(playerPosX>=height || map[playerPosX][playerPosY] instanceof Water){
+                        playerPosX-=1;
                     }
                     directionName="down";
                     stepscount+=player.pickUpItem(map, playerPosX, playerPosY);
